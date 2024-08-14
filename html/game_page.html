@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/css/game_page.css" />
+    <link href='https://fonts.googleapis.com/css?family=Rubik One' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LM Maze</title>
+</head>
+<body>
+    <div class="container">
+        <video autoplay loop muted plays-inline class="background-clip">
+            <source src="/image/game_background.mp4" type="video/mp4">
+        </video>
+        <div id="maze-container" class="maze-container">
+            <canvas class="maze" id="maze"></canvas>
+        </div>
+        <div id="right-container" class="right-container">
+            <div class="first">Choose Maze Settings</div>
+            <div class="sett">
+                <form id="settings" action="">
+                    <div class="form-group"><label class="label">Select the level</label></div>
+                    <div class="form-group"><label class="label">Select the character</label></div>
+                    <div class="form-group"><label class="label">Select the color</label></div>
+                    <div class="form-group">
+                        <select id="levelselect" class="form-control">
+                            <option value="30">Easy</option>
+                            <option value="25">Moderate</option>
+                            <option value="20">Challenging</option>
+                            <option value="15">Difficult</option>
+                            <option value="10">Expert</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select id="characterselect" class="form-control">
+                            <option value="/image/icons8-hello-kitty-100.png">Hello Kitty</option>
+                            <option value="/image/icons8-monkey-d-luffy-100.png">Luffy</option>
+                            <option value="/image/icons8-totoro-100.png">Totoro</option>
+                            <option value="/image/icons8-woody-woodpecker-150.png">Woody</option>
+                            <option value="/image/icons8-doraemon-100.png">Doraymon</option>
+                            <option value="/image/icons8-bt21-cooky-100.png">Cooky</option>
+                        </select>
+                    </div>   
+                    <div class="form-group">
+                        <select id="colorselect" class="form-control">
+                            <option value="#9ca7df">Blue</option>
+                            <option value="#c2d7f4">Baby Blue</option>
+                            <option value="#fd5f9c">Pink</option>
+                            <option value="#fcc3d1">Baby Pink</option>
+                            <option value="#e4a256">Orange</option>
+                            <option value="#f7c3ab">Light Orange</option>
+                        </select>
+                    </div>                
+                </form>
+            </div>
+            <div class="first">Choose Generation Way</div>
+            <div class="butt">
+                <div class="form-group">
+                    <button class="generate_button" type="submit" id="1">Generate Maze Randomly</button>
+                </div>
+                <div class="form-group">
+                    <button class="generate_button" type="submit" id="2">Generate Maze By User</button>
+                </div>
+                <div class="form-group">
+                    <button class="generate_button1" type="submit" id="3">Finish Generate</button>
+                </div> 
+            </div>
+            <div class="first">Choose number and position of the goal</div>
+            <div class="sg">
+                <div class="form-group">
+                    <button class="generate_button" type="submit" id="start" disabled>Choose Start Position</button>
+                </div>
+                <div class="form-group">
+                    <button class="generate_button" type="submit" id="goal" disabled>Choose Goal Position</button>
+                </div>
+            </div>
+            <div class="first">Choose Maze Solving Algorithm</div>
+            <div class="third">
+                <select id="algorithm-select" class="form-control" disabled>
+                    <option value="astar">A* Search</option>
+                    <option value="uniform-cost">Uniform Cost Search</option>
+                    <option value="best-first">Best-First Search</option>
+                </select>
+                <select id="heuristic-select" class="form-control" disabled>
+                    <option value="manhattan">Manhattan</option>
+                    <option value="euclidean">Euclidean</option>
+                </select>
+                <button id="solve-button" class="solve_button" disabled >Solve Maze</button>
+            </div>
+            <div id="results">
+                <div id="tested-nodes-container"></div> <!-- First div for tested nodes -->
+                <div id="path-container"></div> 
+                <button id="back-button" class="generate_button1">Back</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('back-button').addEventListener('click', () => {
+            window.location.href = "/html/home_page.html"; // Replace with the URL of your target page
+        });
+    </script>
+    <script type="module" src="/js/priority_queue.js"></script>
+    <script type="module" src="/js/A_Star_Search.js"></script>
+    <script type="module" src="/js/Uniform_Cost_Search.js"></script>
+    <script type="module" src="/js/Best_First_Search.js"></script>
+    <script type="module" src="/js/main.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+</body>
+</html>
